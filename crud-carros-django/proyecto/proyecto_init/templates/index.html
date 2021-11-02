@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {%block estilos %} {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> {%endblock estilos %}
+    <title>Lista de Vehiculos</title>
+</head>
+
+<body>
+    {%block cuerpo %}
+    <header>
+        <h1>Lista de Vehiculos</h1>
+    </header>
+
+
+    <main class="integrantes">
+        <div class="lev">
+            <h2>Lev Mile Paredes</h2>
+        </div>
+        <div class="andres">
+            <h2>Andrés Aguas</h2>
+        </div>
+        <div class="jocelyn">
+            <h2>Jocelyn Pajaro</h2>
+        </div>
+        <div class="diego">
+            <h2>Diego Roble</h2>
+        </div>
+    </main>
+
+
+    <main class="contenido">
+        <article> {%block crearUs %}
+            <div class="btn-accion"><a href="{% url 'crear_vehiculo' %}">crear nuevo
+                    contacto</a></div>
+            {%endblock crearUs %}</article>
+        <article>
+            <table>
+                <tr>
+                    <th class="ultima-columna-nombre">tipo</th>
+                    <th>marca</th>
+                    <th>modelo</th>
+                    <th>version</th>
+                    <th>placa</th>
+                    <th>kilometraje</th>
+                    <th class="ultima-columna" colspan="2">ACCIÓN</th>
+                </tr>
+
+                {% for vehiculo in vehiculos%}
+                <tr>
+                    <td class="ultima-columna-nombre">{{vehiculo.tipo}}</td>
+                    <td>{{vehiculo.marca}}</td>
+                    <td>{{vehiculo.modelo}}</td>
+                    <td>{{vehiculo.version}}</td>
+                    <td>{{vehiculo.placa}}</td>
+                    <td>{{vehiculo.kilometraje}}</td>
+                    <td>
+                        <div class="btn-accion"><a href="{% url 'editar_vehiculo' vehiculo.id %}">editar</a></div>
+                    </td>
+                    <td class="ultima-columna">
+                        <div class="btn-eliminar"><a href="{% url 'eliminar' vehiculo.id %}">eliminar</a></div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </article>
+    </main>
+    {%endblock cuerpo %}
+</body>
+
+</html>
