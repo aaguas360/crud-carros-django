@@ -8,14 +8,21 @@
 {% block titulo%}Registrar Vehículo{%endblock titulo%}
 {%block crearUs %}{%endblock crearUs %}
 {%block cuerpo %}
-<main>
-  {% load static %}
- <div> <img src="{% static 'imagenes/image.png' %}" alt="django-logo" width="300"></div>
-  <form action="" class="form-group" method="post">
-    {%csrf_token%}
-  {{formulario}}
-  <button>Crear - Editar Vehículo</button>
-</form>
-</main>
+<header class="cabecera"></header>
+<div>
+
+  <main>
+    {% load static %}
+   <div> <img src="{% static 'imagenes/automobile-1300458_1280.png' %}" alt="django-logo" width="160"></div>
+    <form action="" class="form-group" method="post">
+      {%csrf_token%}
+    {{formulario}}
+    <button>Crear - Editar Vehículo</button>
+  </form>
+  </main>
+</div>
+
+<footer class="pie-pagina">
+</footer>
 <script src="{% static 'js/app.js' %}"></script>
 {%endblock cuerpo %}
